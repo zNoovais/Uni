@@ -55,22 +55,22 @@ float somatorio(char *text,char *alfa, float *tab, float total)
 
 void pular(char *texto) 
 {
-    for (int i = 0; texto[i] != '\0'; i++) 
+ for (int i = 0; texto[i] != '\0'; i++) 
+ {
+  if (isalpha(texto[i])) 
+  {
+    char letra_minuscula = tolower(texto[i]);
+    char proxima_letra = (letra_minuscula - 'a' + 1) % 26 + 'a';
+    if (isupper(texto[i])) 
+     {
+      texto[i] = toupper(proxima_letra);
+     } 
+    else 
     {
-        if (isalpha(texto[i])) 
-        {
-            char letra_minuscula = tolower(texto[i]);
-            char proxima_letra = (letra_minuscula - 'a' + 1) % 26 + 'a';
-            if (isupper(texto[i])) 
-            {
-                texto[i] = toupper(proxima_letra);
-            } 
-            else 
-            {
-                texto[i] = proxima_letra;
-            }
-        }
-    }
+     texto[i] = proxima_letra;
+     }
+  }
+ }
 }
 
 int main(void)
