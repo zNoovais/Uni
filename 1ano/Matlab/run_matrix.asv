@@ -1,0 +1,6 @@
+Id = MIdentidade(3);
+Id = M_op1(Id,1,3);
+
+A = [1, 1,0.5,1;-2,-2,0;-1,0,1];
+x = length(A(1,:));
+Af = atesc(A);
