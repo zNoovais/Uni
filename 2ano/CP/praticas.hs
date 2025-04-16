@@ -3,6 +3,8 @@ import Data.List (nub, sortBy, groupBy)
 import Data.Map (fromListWith)
 import qualified Data.Map as Map
 import Data.String
+import Data.Bifunctor
+
 
 store :: (Eq a) => a -> [a] -> [a]
 store c = take 10 . nub . (c :)
@@ -62,3 +64,23 @@ separateR = uncurry zip . (uncurry replicate . swap >< id) . split (id >< length
 for :: (a -> a) -> a -> Int -> a
 for b i 0 = i
 for b i x = b (for b i (x - 1))  -- Corrigimos a ordem das operações
+
+t =([("a",10),("b",20),("c",30)],[(1.2,10),(1.3,21),(1.4,31)])
+
+glue :: ([(k1,v)],[(k2,v)]) -> [(Either k1 k2,v)]
+glue = uncurry (++) . (map (i1 >< id) >< map (i2 >< id))
+
+concatTuple :: [([a], [b])] -> ([a], [b]) 
+concatTuple [] = ([],[])
+concatTuple (x:xs) = (fst x ++ fst (concatTuple xs), snd x ++ snd (concatTuple xs))
+
+unglue :: [(Either k1 k2,v)] -> ([(k1,v)],[(k2,v)])
+unglue = concatTuple .  map (either (split singl nil) (split nil singl) . distl)
+
+tiraDaLista :: Eq a => [a] -> (a,[a])   -- NAO é assim que se faz isso nao funciona direito mas a base é a funçao mynub...
+tiraDaLista = either (split head tail . p2) id . grd (uncurry elem) . split head tail
+
+mynub :: Eq a => [a] -> [a]
+mynub = either nil cons . (id -|- ( id >< mynub) . tiraDaLista) . grd null 
+
+
