@@ -4,6 +4,7 @@ import Data.Map (fromListWith)
 import qualified Data.Map as Map
 import Data.String
 import Data.Bifunctor
+import List
 
 
 store :: (Eq a) => a -> [a] -> [a]
@@ -32,8 +33,8 @@ newtype Ind = Ind [(Aut, [Pag])]
 
 --TODO
 mkInd :: (Num p, Ord a, Eq c) => ([(c,[a])],[(p,[c])]) -> [(a,[p])]
-mkInd  =  juntaR . associaChave . (map swap >< map swap) .  (concatMap separateR >< concatMap separateR) 
- 
+mkInd  =  juntaR . associaChave . (map swap >< map swap) .  (concatMap separateR >< concatMap separateR)
+
 --72
 --associa :: [(a,[b])] -> [(b,[a])]
 --associa = fromListWith (++) . map swap . concatMap separateR
@@ -41,7 +42,7 @@ mkInd  =  juntaR . associaChave . (map swap >< map swap) .  (concatMap separateR
 -- a :: Bib
 --a = [(1,["Jose","Antonio"]),(12,["Andre","Jose"]),(1434,["Jose","Afonso"])]
 
-hB = [(1,["A","B"]),(1,["B","D"]),(2,["C","A","F","E"]),(3,["D","B"]),(4,["E"]),(4,["F","D","E"])] 
+hB = [(1,["A","B"]),(1,["B","D"]),(2,["C","A","F","E"]),(3,["D","B"]),(4,["E"]),(4,["F","D","E"])]
 hP = [(11,[1,3,5]),(17,[2,3,4]),(21,[1,2,5]),(32,[2,3,4]),(31,[2]),(29,[1,6]),(90,[3]),(33,[3,5]),(42,[4,2])]
 
 hB2 = map swap hB
@@ -50,7 +51,7 @@ associaChave :: Eq b => ([(a,b)],[(b,c)]) -> [(a,c)]
 associaChave (auts,pags) = [(autor,pag) | (autor,key1) <- auts, (key2,pag) <- pags, key1 == key2]
 
 juntaR :: Eq a => [(a,b)] -> [(a,[b])]
-juntaR = map (split (head.map fst) (map snd)) . groupBy (\ (a1,_) (a2,_) -> a1 == a2) 
+juntaR = map (split (head.map fst) (map snd)) . groupBy (\ (a1,_) (a2,_) -> a1 == a2)
 
 
 separateR2 :: (a, [b]) -> [(a, b)]
@@ -70,7 +71,7 @@ t =([("a",10),("b",20),("c",30)],[(1.2,10),(1.3,21),(1.4,31)])
 glue :: ([(k1,v)],[(k2,v)]) -> [(Either k1 k2,v)]
 glue = uncurry (++) . (map (i1 >< id) >< map (i2 >< id))
 
-concatTuple :: [([a], [b])] -> ([a], [b]) 
+concatTuple :: [([a], [b])] -> ([a], [b])
 concatTuple [] = ([],[])
 concatTuple (x:xs) = (fst x ++ fst (concatTuple xs), snd x ++ snd (concatTuple xs))
 
@@ -81,6 +82,26 @@ tiraDaLista :: Eq a => [a] -> (a,[a])   -- NAO é assim que se faz isso nao func
 tiraDaLista = either (split head tail . p2) id . grd (uncurry elem) . split head tail
 
 mynub :: Eq a => [a] -> [a]
-mynub = either nil cons . (id -|- ( id >< mynub) . tiraDaLista) . grd null 
+mynub = either nil cons . (id -|- ( id >< mynub) . tiraDaLista) . grd null
+
+mysuffixes :: [a] -> [[a]]
+mysuffixes = anaList ((id -|- split cons p2) . outList)
+
+areas :: [Int] -> [[Int]]
+areas = anaList ((id -|- split cons p2) . outList)
+
+auxarea :: (Int,(Int,Int)) -> Int
+auxarea = uncurry (*) . (either p2 p1 >< id) . (grd (uncurry (>)) >< id) . assocl
+
+area :: (Int,[Int]) -> Int
+area = maximumInt . map auxarea . uncurry zip . (uncurry replicate . swap >< id ) . split (id >< length) p2  . (id >< map swap . zip [1..])
 
 
+maximumInt :: [Int] -> Int
+maximumInt = cataList (either (const 0) (uncurry max))
+
+pool :: [Int] -> Int
+pool = hyloList (either (const 0) (uncurry max) . (id -|- (area . split head tail) >< id )) ((id -|- split cons p2) . outList)
+
+--cataList (either (const 0) (uncurry max) . (id -|- (area . split head tail) >< id ) ) . anaList ((id -|- split cons p2) . outList)
+--maximumInt . map (area . split head tail) . mysuffixes
