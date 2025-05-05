@@ -87,9 +87,6 @@ mynub = either nil cons . (id -|- ( id >< mynub) . tiraDaLista) . grd null
 mysuffixes :: [a] -> [[a]]
 mysuffixes = anaList ((id -|- split cons p2) . outList)
 
-areas :: [Int] -> [[Int]]
-areas = anaList ((id -|- split cons p2) . outList)
-
 auxarea :: (Int,(Int,Int)) -> Int
 auxarea = uncurry (*) . (either p2 p1 >< id) . (grd (uncurry (>)) >< id) . assocl
 
@@ -101,7 +98,20 @@ maximumInt :: [Int] -> Int
 maximumInt = cataList (either (const 0) (uncurry max))
 
 pool :: [Int] -> Int
-pool = hyloList (either (const 0) (uncurry max) . (id -|- (area . split head tail) >< id )) ((id -|- split cons p2) . outList)
+--pool = hyloList (either (const 0) (uncurry max) . (id -|- (area . split head tail) >< id )) ((id -|- split cons p2) . outList)
+pool = hyloList (either (const 0) (uncurry max . ((area . split head tail) >< id)))  ((id -|- split cons p2) . outList)
+
+
+
+mapAccL :: ((a,s) -> (c,s)) -> ([a],s) -> [(c,s)]
+mapAccL g = anaList((p1 -|- split (g . p1 . assocl . (id >< swap) . assocr) ((id >< p2 . g) . assocr . (swap >< id) )) . distl . (outList >< id))
+
+aux :: ((a,s) -> Bool) -> ((a,s) -> (c,s)) -> (a,([c],s)) -> ([c],s)
+aux h f =  either (swap . ( id >< uncurry (:) ) . assocr . (swap >< id) . p2) ( swap . (p2 >< id ) . p2) . grd p1 . (h >< (f >< id)) . split (id >< p2) (assocl . (id >< swap))
+
+--mapAccumLfilter :: ((a,s) -> Bool) -> ((a,s) -> (c,s)) -> ([a],s) -> ([c],s)
+--mapAccumLfilter = 
+
 
 --cataList (either (const 0) (uncurry max) . (id -|- (area . split head tail) >< id ) ) . anaList ((id -|- split cons p2) . outList)
---maximumInt . map (area . split head tail) . mysuffixes
+--maximumInt . map (area . split head tail) . mysuffixesn 
