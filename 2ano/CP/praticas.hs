@@ -1,5 +1,5 @@
 import Cp
-import Data.List (nub, sortBy, groupBy)
+import Data.List (nub, sortBy, groupBy, mapAccumL)
 import Data.Map (fromListWith)
 import qualified Data.Map as Map
 import Data.String
@@ -103,15 +103,30 @@ pool = hyloList (either (const 0) (uncurry max . ((area . split head tail) >< id
 
 
 
-mapAccL :: ((a,s) -> (c,s)) -> ([a],s) -> [(c,s)]
-mapAccL g = anaList((p1 -|- split (g . p1 . assocl . (id >< swap) . assocr) ((id >< p2 . g) . assocr . (swap >< id) )) . distl . (outList >< id))
 
 aux :: ((a,s) -> Bool) -> ((a,s) -> (c,s)) -> (a,([c],s)) -> ([c],s)
 aux h f =  either (swap . ( id >< uncurry (:) ) . assocr . (swap >< id) . p2) ( swap . (p2 >< id ) . p2) . grd p1 . (h >< (f >< id)) . split (id >< p2) (assocl . (id >< swap))
 
---mapAccumLfilter :: ((a,s) -> Bool) -> ((a,s) -> (c,s)) -> ([a],s) -> ([c],s)
---mapAccumLfilter = 
+outLP :: ([a],s) -> Either ((),s) (a,([a],s))
+outLP ([],s) = i1 ((),s)
+outLP (h:t,s) = i2 (h,(t,s)) 
 
+
+
+
+mapAccumLfilter :: ((a,s) -> Bool) -> ((a,s) -> (c,s)) -> ([a],s) -> ([c],s)
+mapAccumLfilter h f = either (nil >< id) (aux h f) . (id -|- (id >< mapAccumLfilter h f )) . outLP
+
+
+
+
+
+--tudo isto a baixo foi uma tentativa...
+--mapAccumLfilter :: ((a,s) -> Bool) -> ((a,s) -> (c,s)) -> ([a],s) -> ([c],s)
+--mapAccumLfilter h f =  either nil aux . (id -|- (id >< mapAccumLfilter h f)) .  (id -|- ( assocr . (split head tail >< id))) . grd (null . p1)
 
 --cataList (either (const 0) (uncurry max) . (id -|- (area . split head tail) >< id ) ) . anaList ((id -|- split cons p2) . outList)
---maximumInt . map (area . split head tail) . mysuffixesn 
+--maximumInt . map (area . split head tail) . mysuffixes
+
+--mapAccL :: ((a,s) -> (c,s)) -> ([a],s) -> [(c,s)]
+--mapAccL g = anaList((p1 -|- split (g . p1 . assocl . (id >< swap) . assocr) ((id >< p2 . g) . assocr . (swap >< id) )) . distl . (outList >< id))
