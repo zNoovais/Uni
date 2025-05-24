@@ -97,27 +97,46 @@ area = maximumInt . map auxarea . uncurry zip . (uncurry replicate . swap >< id 
 maximumInt :: [Int] -> Int
 maximumInt = cataList (either (const 0) (uncurry max))
 
-pool :: [Int] -> Int
+mostwater :: [Int] -> Int
 --pool = hyloList (either (const 0) (uncurry max) . (id -|- (area . split head tail) >< id )) ((id -|- split cons p2) . outList)
-pool = hyloList (either (const 0) (uncurry max . ((area . split head tail) >< id)))  ((id -|- split cons p2) . outList)
+mostwater = hyloList (either (const 0) (uncurry max . ((area . split head tail) >< id)))  ((id -|- split cons p2) . outList)
+
+
+auxR :: ((a,s) -> Bool) -> ((a,s) -> (c,s)) -> ([a],([c],s)) -> ([c],s)
+auxR h f =  either (swap . ( id >< uncurry (:) ) . assocr . (swap >< id) . p2) ( swap . (p2 >< id ) . p2) . grd p1 . (h >< (f >< id)) . split (id >< p2) (assocl . (id >< swap)) . (head >< id)
+
+auxL :: ((a,s) -> Bool) -> ((a,s) -> (c,s)) -> ([a],([a],s)) -> ([c],([a],s))
+auxL h f = either ((singl >< id) . p2 ) (( nil >< id) . p2) . grd p1 . (id >< (( id >< swap ) . assocr)) . assocr . (split h f >< id) . assocl . (head >< swap)
+
+--------- fazendo a base do LP list Pair ([a],s)
 
 
 
-
-aux :: ((a,s) -> Bool) -> ((a,s) -> (c,s)) -> (a,([c],s)) -> ([c],s)
-aux h f =  either (swap . ( id >< uncurry (:) ) . assocr . (swap >< id) . p2) ( swap . (p2 >< id ) . p2) . grd p1 . (h >< (f >< id)) . split (id >< p2) (assocl . (id >< swap))
-
-outLP :: ([a],s) -> Either ((),s) (a,([a],s))
 outLP ([],s) = i1 ((),s)
-outLP (h:t,s) = i2 (h,(t,s)) 
+outLP (h:t,s) = i2 (singl h,(t,s))
+
+
+inLP = either (nil >< id) ((uncurry (++) >< id) . assocl)
+
+
+recLP f = id -|- (id >< f)
+
+
+cataLP g = g . recLP (cataLP g) . outLP
+
+
+anaLP g = inLP . recLP (anaLP g) . g
+
+hyloLP = cataLP . anaLP
 
 
 
+mapAccumLfilterR :: ((a,s) -> Bool) -> ((a,s) -> (c,s)) -> ([a],s) -> ([c],s)
+--mapAccumLfilterR h f = either (nil >< id) (aux h f) . (id -|- (id >< mapAccumLfilterR h f )) . outLP
+mapAccumLfilterR h f = cataLP (either (nil >< id) (auxR h f))
 
-mapAccumLfilter :: ((a,s) -> Bool) -> ((a,s) -> (c,s)) -> ([a],s) -> ([c],s)
-mapAccumLfilter h f = either (nil >< id) (aux h f) . (id -|- (id >< mapAccumLfilter h f )) . outLP
-
-
+mapAccumfilterL :: ((a,s) -> Bool) -> ((a,s) -> (c,s)) -> ([a],s) -> ([c],s)
+mapAccumfilterL h f = anaLP (((nil >< id) -|- auxL h f) . outLP)
 
 
 
