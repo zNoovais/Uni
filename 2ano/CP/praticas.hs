@@ -12,7 +12,7 @@ import Nat (cataNat)
 
 
 dobro :: Num a => a -> a
-dobro x = x+x 
+dobro x = x+x
 
 store :: (Eq a) => a -> [a] -> [a]
 store c = take 10 . nub . (c :)
@@ -204,7 +204,7 @@ facc2 0 = 2
 facc2 n = succ (p2 (facc (n-1),facc2 (n-1)))
 
 faca 0 = 6
-faca n = (2*n + 2)*(2*n + 3)*faca(n-1)
+faca n = (2*n + 2)*(2*n + 3)*faca (n-1)
 
 faca1 0 = 4
 faca1 n = 2*n +4
@@ -216,24 +216,24 @@ faca2 n = 2*n + 5
 
 faccM = cataNat (split (either (const 1) mul) (either (const 2) (succ . p2)))
 
-facaM = cataNat(split (either (const 6) (mul . (id >< mul)) ) (split (either (const 4) (succ.succ.p1.p2)) (either (const 5) (succ.succ.p2.p2)) ))
+facaM = cataNat (split (either (const 6) (mul . (id >< mul)) ) (split (either (const 4) (succ.succ.p1.p2)) (either (const 5) (succ.succ.p2.p2)) ))
 
-termoM = cataNat(split (either (const 4) mul) (either (const 0) p2))
+termoM = cataNat (split (either (const 4) mul) (either (const 0) p2))
 
 
 -- a maior piada de mal gosto:
 picalcM :: Integer -> (Double,     (Integer, (Integer, (Integer, (Integer, (Integer, Integer))))))
-picalcM = cataNat(split (either (const 2) (uncurry (+) . (id >< ( uncurry (/) . (fromIntegral . mul >< fromIntegral) . (( id >< (^2)) >< id) . swap . (id >< (id >< p1)) ))) ) (split (either (const 6) (mul . (id >< (mul . (p2.p2.p2))) . p2 )) (split (either (const 4) (dobro.p1.p2.p2) ) (split (either (const 1) (mul . (id >< p1) . p2 . p2 . p2) ) (split (either (const 2) (succ . p1 . p2 . p2 . p2 . p2)) (split (either (const 4) (succ . succ . p1 . p2 . p2 . p2 . p2 . p2)) (either (const 5) (succ.succ.p2.p2.p2.p2.p2.p2)  ) ) ) ) ) ) )
+picalcM = cataNat (split (either (const 2) (uncurry (+) . (id >< ( uncurry (/) . (fromIntegral . mul >< fromIntegral) . (( id >< (^2)) >< id) . swap . (id >< (id >< p1)) ))) ) (split (either (const 6) (mul . (id >< (mul . (p2.p2.p2))) . p2 )) (split (either (const 4) (dobro.p1.p2.p2) ) (split (either (const 1) (mul . (id >< p1) . p2 . p2 . p2) ) (split (either (const 2) (succ . p1 . p2 . p2 . p2 . p2)) (split (either (const 4) (succ . succ . p1 . p2 . p2 . p2 . p2 . p2)) (either (const 5) (succ.succ.p2.p2.p2.p2.p2.p2)  ) ) ) ) ) ) )
 
 picalcMP = p1 . picalcM
 
 picalcMF = for loop inic where
   inic = (2,6,4,1,2,4,5)
-  loop (s,g,t,f,f2,g1,g2) = (s + fromIntegral(f^2*t)/fromIntegral g, g*g1*g2, dobro t, f*f2, succ f2, g1+2, g2+2) 
- 
+  loop (s,g,t,f,f2,g1,g2) = (s + fromIntegral (f^2*t)/fromIntegral g, g*g1*g2, dobro t, f*f2, succ f2, g1+2, g2+2)
+
 h = wrapper . picalcMF
 
-wrapper (x,_,_,_,_,_,_) = x 
+wrapper (x,_,_,_,_,_,_) = x
 
 
 
@@ -278,9 +278,13 @@ instance Applicative Vec where
 
 
 instance Monad Vec where
-   x >>= f = undefined
-   return = undefined
+   x >>= f = miuV (fmap f x)
+   return = V . singl . split id (const 1)
 
 
 
+miuaux :: ([(a,Int)],Int) -> [(a,Int)]
+miuaux = map ((id >< uncurry (*)) . assocr). uncurry zip . (id >< uncurry replicate) . assocr . (split id length >< id)
 
+miuV :: Vec (Vec a) -> Vec a
+miuV = V . concatMap (miuaux . (outV >< id)) . outV
