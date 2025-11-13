@@ -1,0 +1,517 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> Calculadora
+Rule 1     Calculadora -> ATRIB
+Rule 2     Calculadora -> VALVAR
+Rule 3     Calculadora -> VALEXP
+Rule 4     Calculadora -> DUMP
+Rule 5     ATRIB -> VAR = EXP
+Rule 6     VALVAR -> ? VAR
+Rule 7     VALEXP -> ! EXP
+Rule 8     DUMP -> *
+Rule 9     EXP -> MENOS
+Rule 10    EXP -> MAIS
+Rule 11    EXP -> TERM
+Rule 12    MAIS -> EXP + TERM
+Rule 13    MENOS -> EXP - TERM
+Rule 14    TERM -> MULT
+Rule 15    TERM -> DIV
+Rule 16    TERM -> FACTOR
+Rule 17    MULT -> TERM * FACTOR
+Rule 18    DIV -> TERM / FACTOR
+Rule 19    FACTOR -> NUM
+Rule 20    FACTOR -> PA
+Rule 21    FACTOR -> VAR
+Rule 22    PA -> ( EXP )
+
+Terminals, with rules where they appear
+
+!                    : 7
+(                    : 22
+)                    : 22
+*                    : 8 17
++                    : 12
+-                    : 13
+/                    : 18
+=                    : 5
+?                    : 6
+NUM                  : 19
+VAR                  : 5 6 21
+error                : 
+
+Nonterminals, with rules where they appear
+
+ATRIB                : 1
+Calculadora          : 0
+DIV                  : 15
+DUMP                 : 4
+EXP                  : 5 7 12 13 22
+FACTOR               : 16 17 18
+MAIS                 : 10
+MENOS                : 9
+MULT                 : 14
+PA                   : 20
+TERM                 : 11 12 13 17 18
+VALEXP               : 3
+VALVAR               : 2
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . Calculadora
+    (1) Calculadora -> . ATRIB
+    (2) Calculadora -> . VALVAR
+    (3) Calculadora -> . VALEXP
+    (4) Calculadora -> . DUMP
+    (5) ATRIB -> . VAR = EXP
+    (6) VALVAR -> . ? VAR
+    (7) VALEXP -> . ! EXP
+    (8) DUMP -> . *
+
+    VAR             shift and go to state 6
+    ?               shift and go to state 7
+    !               shift and go to state 8
+    *               shift and go to state 9
+
+    Calculadora                    shift and go to state 1
+    ATRIB                          shift and go to state 2
+    VALVAR                         shift and go to state 3
+    VALEXP                         shift and go to state 4
+    DUMP                           shift and go to state 5
+
+state 1
+
+    (0) S' -> Calculadora .
+
+
+
+state 2
+
+    (1) Calculadora -> ATRIB .
+
+    $end            reduce using rule 1 (Calculadora -> ATRIB .)
+
+
+state 3
+
+    (2) Calculadora -> VALVAR .
+
+    $end            reduce using rule 2 (Calculadora -> VALVAR .)
+
+
+state 4
+
+    (3) Calculadora -> VALEXP .
+
+    $end            reduce using rule 3 (Calculadora -> VALEXP .)
+
+
+state 5
+
+    (4) Calculadora -> DUMP .
+
+    $end            reduce using rule 4 (Calculadora -> DUMP .)
+
+
+state 6
+
+    (5) ATRIB -> VAR . = EXP
+
+    =               shift and go to state 10
+
+
+state 7
+
+    (6) VALVAR -> ? . VAR
+
+    VAR             shift and go to state 11
+
+
+state 8
+
+    (7) VALEXP -> ! . EXP
+    (9) EXP -> . MENOS
+    (10) EXP -> . MAIS
+    (11) EXP -> . TERM
+    (13) MENOS -> . EXP - TERM
+    (12) MAIS -> . EXP + TERM
+    (14) TERM -> . MULT
+    (15) TERM -> . DIV
+    (16) TERM -> . FACTOR
+    (17) MULT -> . TERM * FACTOR
+    (18) DIV -> . TERM / FACTOR
+    (19) FACTOR -> . NUM
+    (20) FACTOR -> . PA
+    (21) FACTOR -> . VAR
+    (22) PA -> . ( EXP )
+
+    NUM             shift and go to state 19
+    VAR             shift and go to state 21
+    (               shift and go to state 22
+
+    EXP                            shift and go to state 12
+    MENOS                          shift and go to state 13
+    MAIS                           shift and go to state 14
+    TERM                           shift and go to state 15
+    MULT                           shift and go to state 16
+    DIV                            shift and go to state 17
+    FACTOR                         shift and go to state 18
+    PA                             shift and go to state 20
+
+state 9
+
+    (8) DUMP -> * .
+
+    $end            reduce using rule 8 (DUMP -> * .)
+
+
+state 10
+
+    (5) ATRIB -> VAR = . EXP
+    (9) EXP -> . MENOS
+    (10) EXP -> . MAIS
+    (11) EXP -> . TERM
+    (13) MENOS -> . EXP - TERM
+    (12) MAIS -> . EXP + TERM
+    (14) TERM -> . MULT
+    (15) TERM -> . DIV
+    (16) TERM -> . FACTOR
+    (17) MULT -> . TERM * FACTOR
+    (18) DIV -> . TERM / FACTOR
+    (19) FACTOR -> . NUM
+    (20) FACTOR -> . PA
+    (21) FACTOR -> . VAR
+    (22) PA -> . ( EXP )
+
+    NUM             shift and go to state 19
+    VAR             shift and go to state 21
+    (               shift and go to state 22
+
+    EXP                            shift and go to state 23
+    MENOS                          shift and go to state 13
+    MAIS                           shift and go to state 14
+    TERM                           shift and go to state 15
+    MULT                           shift and go to state 16
+    DIV                            shift and go to state 17
+    FACTOR                         shift and go to state 18
+    PA                             shift and go to state 20
+
+state 11
+
+    (6) VALVAR -> ? VAR .
+
+    $end            reduce using rule 6 (VALVAR -> ? VAR .)
+
+
+state 12
+
+    (7) VALEXP -> ! EXP .
+    (13) MENOS -> EXP . - TERM
+    (12) MAIS -> EXP . + TERM
+
+    $end            reduce using rule 7 (VALEXP -> ! EXP .)
+    -               shift and go to state 24
+    +               shift and go to state 25
+
+
+state 13
+
+    (9) EXP -> MENOS .
+
+    -               reduce using rule 9 (EXP -> MENOS .)
+    +               reduce using rule 9 (EXP -> MENOS .)
+    $end            reduce using rule 9 (EXP -> MENOS .)
+    )               reduce using rule 9 (EXP -> MENOS .)
+
+
+state 14
+
+    (10) EXP -> MAIS .
+
+    -               reduce using rule 10 (EXP -> MAIS .)
+    +               reduce using rule 10 (EXP -> MAIS .)
+    $end            reduce using rule 10 (EXP -> MAIS .)
+    )               reduce using rule 10 (EXP -> MAIS .)
+
+
+state 15
+
+    (11) EXP -> TERM .
+    (17) MULT -> TERM . * FACTOR
+    (18) DIV -> TERM . / FACTOR
+
+    -               reduce using rule 11 (EXP -> TERM .)
+    +               reduce using rule 11 (EXP -> TERM .)
+    $end            reduce using rule 11 (EXP -> TERM .)
+    )               reduce using rule 11 (EXP -> TERM .)
+    *               shift and go to state 26
+    /               shift and go to state 27
+
+
+state 16
+
+    (14) TERM -> MULT .
+
+    *               reduce using rule 14 (TERM -> MULT .)
+    /               reduce using rule 14 (TERM -> MULT .)
+    -               reduce using rule 14 (TERM -> MULT .)
+    +               reduce using rule 14 (TERM -> MULT .)
+    $end            reduce using rule 14 (TERM -> MULT .)
+    )               reduce using rule 14 (TERM -> MULT .)
+
+
+state 17
+
+    (15) TERM -> DIV .
+
+    *               reduce using rule 15 (TERM -> DIV .)
+    /               reduce using rule 15 (TERM -> DIV .)
+    -               reduce using rule 15 (TERM -> DIV .)
+    +               reduce using rule 15 (TERM -> DIV .)
+    $end            reduce using rule 15 (TERM -> DIV .)
+    )               reduce using rule 15 (TERM -> DIV .)
+
+
+state 18
+
+    (16) TERM -> FACTOR .
+
+    *               reduce using rule 16 (TERM -> FACTOR .)
+    /               reduce using rule 16 (TERM -> FACTOR .)
+    -               reduce using rule 16 (TERM -> FACTOR .)
+    +               reduce using rule 16 (TERM -> FACTOR .)
+    $end            reduce using rule 16 (TERM -> FACTOR .)
+    )               reduce using rule 16 (TERM -> FACTOR .)
+
+
+state 19
+
+    (19) FACTOR -> NUM .
+
+    *               reduce using rule 19 (FACTOR -> NUM .)
+    /               reduce using rule 19 (FACTOR -> NUM .)
+    -               reduce using rule 19 (FACTOR -> NUM .)
+    +               reduce using rule 19 (FACTOR -> NUM .)
+    $end            reduce using rule 19 (FACTOR -> NUM .)
+    )               reduce using rule 19 (FACTOR -> NUM .)
+
+
+state 20
+
+    (20) FACTOR -> PA .
+
+    *               reduce using rule 20 (FACTOR -> PA .)
+    /               reduce using rule 20 (FACTOR -> PA .)
+    -               reduce using rule 20 (FACTOR -> PA .)
+    +               reduce using rule 20 (FACTOR -> PA .)
+    $end            reduce using rule 20 (FACTOR -> PA .)
+    )               reduce using rule 20 (FACTOR -> PA .)
+
+
+state 21
+
+    (21) FACTOR -> VAR .
+
+    *               reduce using rule 21 (FACTOR -> VAR .)
+    /               reduce using rule 21 (FACTOR -> VAR .)
+    -               reduce using rule 21 (FACTOR -> VAR .)
+    +               reduce using rule 21 (FACTOR -> VAR .)
+    $end            reduce using rule 21 (FACTOR -> VAR .)
+    )               reduce using rule 21 (FACTOR -> VAR .)
+
+
+state 22
+
+    (22) PA -> ( . EXP )
+    (9) EXP -> . MENOS
+    (10) EXP -> . MAIS
+    (11) EXP -> . TERM
+    (13) MENOS -> . EXP - TERM
+    (12) MAIS -> . EXP + TERM
+    (14) TERM -> . MULT
+    (15) TERM -> . DIV
+    (16) TERM -> . FACTOR
+    (17) MULT -> . TERM * FACTOR
+    (18) DIV -> . TERM / FACTOR
+    (19) FACTOR -> . NUM
+    (20) FACTOR -> . PA
+    (21) FACTOR -> . VAR
+    (22) PA -> . ( EXP )
+
+    NUM             shift and go to state 19
+    VAR             shift and go to state 21
+    (               shift and go to state 22
+
+    EXP                            shift and go to state 28
+    MENOS                          shift and go to state 13
+    MAIS                           shift and go to state 14
+    TERM                           shift and go to state 15
+    MULT                           shift and go to state 16
+    DIV                            shift and go to state 17
+    FACTOR                         shift and go to state 18
+    PA                             shift and go to state 20
+
+state 23
+
+    (5) ATRIB -> VAR = EXP .
+    (13) MENOS -> EXP . - TERM
+    (12) MAIS -> EXP . + TERM
+
+    $end            reduce using rule 5 (ATRIB -> VAR = EXP .)
+    -               shift and go to state 24
+    +               shift and go to state 25
+
+
+state 24
+
+    (13) MENOS -> EXP - . TERM
+    (14) TERM -> . MULT
+    (15) TERM -> . DIV
+    (16) TERM -> . FACTOR
+    (17) MULT -> . TERM * FACTOR
+    (18) DIV -> . TERM / FACTOR
+    (19) FACTOR -> . NUM
+    (20) FACTOR -> . PA
+    (21) FACTOR -> . VAR
+    (22) PA -> . ( EXP )
+
+    NUM             shift and go to state 19
+    VAR             shift and go to state 21
+    (               shift and go to state 22
+
+    TERM                           shift and go to state 29
+    MULT                           shift and go to state 16
+    DIV                            shift and go to state 17
+    FACTOR                         shift and go to state 18
+    PA                             shift and go to state 20
+
+state 25
+
+    (12) MAIS -> EXP + . TERM
+    (14) TERM -> . MULT
+    (15) TERM -> . DIV
+    (16) TERM -> . FACTOR
+    (17) MULT -> . TERM * FACTOR
+    (18) DIV -> . TERM / FACTOR
+    (19) FACTOR -> . NUM
+    (20) FACTOR -> . PA
+    (21) FACTOR -> . VAR
+    (22) PA -> . ( EXP )
+
+    NUM             shift and go to state 19
+    VAR             shift and go to state 21
+    (               shift and go to state 22
+
+    TERM                           shift and go to state 30
+    MULT                           shift and go to state 16
+    DIV                            shift and go to state 17
+    FACTOR                         shift and go to state 18
+    PA                             shift and go to state 20
+
+state 26
+
+    (17) MULT -> TERM * . FACTOR
+    (19) FACTOR -> . NUM
+    (20) FACTOR -> . PA
+    (21) FACTOR -> . VAR
+    (22) PA -> . ( EXP )
+
+    NUM             shift and go to state 19
+    VAR             shift and go to state 21
+    (               shift and go to state 22
+
+    FACTOR                         shift and go to state 31
+    PA                             shift and go to state 20
+
+state 27
+
+    (18) DIV -> TERM / . FACTOR
+    (19) FACTOR -> . NUM
+    (20) FACTOR -> . PA
+    (21) FACTOR -> . VAR
+    (22) PA -> . ( EXP )
+
+    NUM             shift and go to state 19
+    VAR             shift and go to state 21
+    (               shift and go to state 22
+
+    FACTOR                         shift and go to state 32
+    PA                             shift and go to state 20
+
+state 28
+
+    (22) PA -> ( EXP . )
+    (13) MENOS -> EXP . - TERM
+    (12) MAIS -> EXP . + TERM
+
+    )               shift and go to state 33
+    -               shift and go to state 24
+    +               shift and go to state 25
+
+
+state 29
+
+    (13) MENOS -> EXP - TERM .
+    (17) MULT -> TERM . * FACTOR
+    (18) DIV -> TERM . / FACTOR
+
+    -               reduce using rule 13 (MENOS -> EXP - TERM .)
+    +               reduce using rule 13 (MENOS -> EXP - TERM .)
+    $end            reduce using rule 13 (MENOS -> EXP - TERM .)
+    )               reduce using rule 13 (MENOS -> EXP - TERM .)
+    *               shift and go to state 26
+    /               shift and go to state 27
+
+
+state 30
+
+    (12) MAIS -> EXP + TERM .
+    (17) MULT -> TERM . * FACTOR
+    (18) DIV -> TERM . / FACTOR
+
+    -               reduce using rule 12 (MAIS -> EXP + TERM .)
+    +               reduce using rule 12 (MAIS -> EXP + TERM .)
+    $end            reduce using rule 12 (MAIS -> EXP + TERM .)
+    )               reduce using rule 12 (MAIS -> EXP + TERM .)
+    *               shift and go to state 26
+    /               shift and go to state 27
+
+
+state 31
+
+    (17) MULT -> TERM * FACTOR .
+
+    *               reduce using rule 17 (MULT -> TERM * FACTOR .)
+    /               reduce using rule 17 (MULT -> TERM * FACTOR .)
+    -               reduce using rule 17 (MULT -> TERM * FACTOR .)
+    +               reduce using rule 17 (MULT -> TERM * FACTOR .)
+    $end            reduce using rule 17 (MULT -> TERM * FACTOR .)
+    )               reduce using rule 17 (MULT -> TERM * FACTOR .)
+
+
+state 32
+
+    (18) DIV -> TERM / FACTOR .
+
+    *               reduce using rule 18 (DIV -> TERM / FACTOR .)
+    /               reduce using rule 18 (DIV -> TERM / FACTOR .)
+    -               reduce using rule 18 (DIV -> TERM / FACTOR .)
+    +               reduce using rule 18 (DIV -> TERM / FACTOR .)
+    $end            reduce using rule 18 (DIV -> TERM / FACTOR .)
+    )               reduce using rule 18 (DIV -> TERM / FACTOR .)
+
+
+state 33
+
+    (22) PA -> ( EXP ) .
+
+    *               reduce using rule 22 (PA -> ( EXP ) .)
+    /               reduce using rule 22 (PA -> ( EXP ) .)
+    -               reduce using rule 22 (PA -> ( EXP ) .)
+    +               reduce using rule 22 (PA -> ( EXP ) .)
+    $end            reduce using rule 22 (PA -> ( EXP ) .)
+    )               reduce using rule 22 (PA -> ( EXP ) .)
+
