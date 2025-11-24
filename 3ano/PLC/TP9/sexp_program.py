@@ -1,11 +1,10 @@
-from parser import parser
 import sys
+from sexp_sin import parser
 
- 
 for linha in sys.stdin:
-    # Análise do texto
+    parser.success = True
     parser.parse(linha)
     if parser.success:
-        pass
+        print("Frase válida: ", linha)
     else:
         print("Frase inválida... Corrija e tente novamente!")

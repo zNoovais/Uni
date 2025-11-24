@@ -8,21 +8,26 @@ def p_calculadora(p):
                 | VALEXP
                 | DUMP
     """
-    print(p[1])
+    print(str(p[1]))
 
 def p_atrib(p): #parser.vars
     r"""
     ATRIB : VAR "=" EXP
-    """
-
-    pass
+    """ 
+    parser.vars[p[1]] = p[3]
+    p[0] = "Var " + p[1] + " = " + str(p[3]) 
 
 def p_valvar(p):
     r"""
     VALVAR : "?" VAR
     """
+    if p[2] not in parser.vars.keys():
+        p[0] = "var not in memory"
+    else:
+        p[0] = parser.vars[p[2]]
+
     p[0] = parser.vars[p[2]]
-    pass
+    
 def p_valexp(p):
     r"""
     VALEXP : "!" EXP
@@ -33,7 +38,11 @@ def p_dump(p):
     r"""
     DUMP : "*"
     """
-    pass
+    res = ""
+    for var,v in parser.vars.items():
+        res += f"{var}: {v}\n"
+    
+    p[0] = res
 
 ##### fim das funçoes 
 
@@ -88,9 +97,12 @@ def p_factor(p):
     r"""
     FACTOR : NUM
            | PA
-           | VAR
+           | VARNUM
     """
-    p[0] = float(p[1])
+    if p.slice[1].type != "VARNUM":
+        p[0] = float(p[1])
+    else:
+        p[0] = p[1]
 
 def p_parent(p):
     r"""
@@ -98,7 +110,14 @@ def p_parent(p):
     """
     p[0] = p[2]
     
-
+def p_varnum(p):
+    r"""
+    VARNUM : VAR
+    """
+    if p[1] in parser.vars.keys():
+        p[0] = parser.vars[p[1]]
+    else:
+        p[0] = f"error :: variable {p[1]} not in memory"
 
 def p_error(p):
     print('Erro sintático: ', p)
@@ -111,4 +130,6 @@ parser = yacc.yacc()
 parser.success = True
 parser.vars = dict()
 
-parser.parse("! 10*(1+1)")
+parser.parse("x = 10")
+
+
