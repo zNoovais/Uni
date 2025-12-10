@@ -78,21 +78,19 @@ execute:
 
 **(A) Caso bivariado:** matriz de correlação $$
 P=\begin{bmatrix}1 & r\\ r & 1\end{bmatrix},\quad r=\rho(X_1,X_2)\ne0.
-$$ 
-1. Determine as **duas CPs** (valores próprios/vetores próprios de $P$). 
+$$ 1. Determine as **duas CPs** (valores próprios/vetores próprios de $P$).
 
-2. Discuta, em função de $r$, a **importância** relativa das CPs.
+2.  Discuta, em função de $r$, a **importância** relativa das CPs.
 
----
+------------------------------------------------------------------------
 
 **(B) Caso trivariado:** $$
 P=\begin{bmatrix}1 & r & 0\\ r & 1 & 0\\ 0 & 0 & 1\end{bmatrix},\quad r\ne0.
-$$ 
-1. Determine as **três CPs**. 
+$$ 1. Determine as **três CPs**.
 
-2. Discuta a importância em função de $r$. 
+2.  Discuta a importância em função de $r$.
 
-3. Compare com (A) e comente o efeito de $X_3$ ser **não correlacionada** com $X_1$ e $X_2$.
+3.  Compare com (A) e comente o efeito de $X_3$ ser **não correlacionada** com $X_1$ e $X_2$.
 
 ------------------------------------------------------------------------
 

@@ -48,18 +48,40 @@ nci <- ISLR2::NCI60
 
 X <- scale(nci$data)
 
+View(X)
 
 cova <- cov(X)
+
+View(cova)
 
 corr <- prcomp(X,center = TRUE,scale=FALSE)
 glimpse(corr)
 summary(corr)
 
-glimpse(X)
+head(X)
 
 screeplot(corr)
 
 
+scores <- as.data.frame(corr$x)
+
+scores$lab <- labs
+
+plot(corr$x[,1], corr$x[,2], col = as.factor(NCI60$labs))
+
+biplot(corr)
+
+
+library(ggplot2)
+
+scores <- as.data.frame(corr$x)
+scores$Tipo <- NCI60$labs   # adiciona as labels
+
+ggplot(scores, aes(x = PC1, y = PC2, color = Tipo)) +
+  geom_point(size = 3, alpha = 0.8)
+
+
+View(corr$x)
 
 
 
@@ -83,6 +105,28 @@ screeplot(corr)
 ```{r E2}
 library(mlbench)
 data(Sonar)
+
+X <- scale(as.matrix(Sonar[, 1:60]))
+X
+y <- Sonar$Class
+y
+
+c(dim(X), classes = levels(y))
+
+
+corr <- prcomp(X,center = TRUE,scale=FALSE)
+
+summary(corr)
+
+screeplot(corr)
+
+scores <- corr$x
+y
+
+ggplot(scores, aes(x = PC1, y = PC2, color = y)) +
+  geom_point(size = 3, alpha = 0.8)
+
+corr$rotation
 
 ```
 
