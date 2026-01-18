@@ -1,0 +1,241 @@
+{
+  "main": {
+    "id": "a09165a12004852f",
+    "type": "split",
+    "children": [
+      {
+        "id": "4b72f5572f700e94",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5c7014321e8d89e3",
+            "type": "leaf",
+            "state": {
+              "type": "pdf",
+              "state": {
+                "file": "3ano/PLC/projeto.pdf",
+                "page": 3,
+                "left": -10,
+                "top": 686,
+                "zoom": 1.5580880434374105
+              },
+              "icon": "lucide-file-text",
+              "title": "projeto"
+            }
+          },
+          {
+            "id": "9a75e477e1d8f5ed",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "3ano/PLC/trabalho.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "trabalho"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "e3cbbd84c8033ce2",
+    "type": "split",
+    "children": [
+      {
+        "id": "95d082fc7fb244e0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e57faf308d191263",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de ficheiros"
+            }
+          },
+          {
+            "id": "4cda8b78ff8dc2f5",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": true,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Procurar"
+            }
+          },
+          {
+            "id": "0914925669da61e3",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "349ab61464f6c816",
+    "type": "split",
+    "children": [
+      {
+        "id": "32b567920f2ddfde",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fd9679ff39c6b164",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "cb39e28f428a26bc",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Links Externos"
+            }
+          },
+          {
+            "id": "ea36324bc87385eb",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "484079d0e99707a6",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "a121bea560842af9",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Índice"
+            }
+          },
+          {
+            "id": "85bdfc2423da7248",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Calendar"
+            }
+          },
+          {
+            "id": "78176c1879eb8166",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
+          }
+        ],
+        "currentTab": 6
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir Quick Switcher": false,
+      "graph:Abrir Visualização de diagrama de grafo": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Abrir nota de hoje": false,
+      "templates:Inserir templates": false,
+      "command-palette:Abrir paleta de comando": false,
+      "bases:Create new base": false,
+      "obsidian-excalidraw-plugin:New drawing": false,
+      "obsidian-git:Open Git source control": false,
+      "pdf-plus:PDF++: Toggle auto-copy": false,
+      "pdf-plus:PDF++: Toggle auto-focus": false,
+      "pdf-plus:PDF++: Toggle auto-paste": false
+    }
+  },
+  "active": "5c7014321e8d89e3",
+  "lastOpenFiles": [
+    "3ano/PLC/trabalho.md",
+    "3ano/PLC/projeto.pdf",
+    "1ano/PF/ficha7.pdf",
+    "3ano/PLC/semana13_funcoes_vm.pdf",
+    "3ano/CC/2.Problemas_de_Decisão.pdf",
+    "3ano/CC/3.Funções_Parciais_Recursivas.pdf",
+    "3ano/CC/4.Introdução_à_Teoria_da_Complexidade.pdf",
+    "3ano/CC/Testes.md",
+    "3ano/CC/Teste2_2022-23.pdf",
+    "3ano/CC/Teste2_2023-24 (1).pdf",
+    "3ano/CC/Não confirmado 751583.crdownload",
+    "3ano/CC/Não confirmado 496610.crdownload",
+    "3ano/TNC/testes.md",
+    "Sem título.canvas",
+    "Midia/Pasted Image 20251219214752_436.png",
+    "Midia/Pasted Image 20251226172619_017.png"
+  ]
+}
