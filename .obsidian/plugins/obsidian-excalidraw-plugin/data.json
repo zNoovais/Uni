@@ -47,7 +47,7 @@
   "matchThemeAlways": false,
   "matchThemeTrigger": false,
   "defaultMode": "normal",
-  "defaultPenMode": "never",
+  "defaultPenMode": "always",
   "penModeDoubleTapEraser": true,
   "penModeSingleFingerPanning": true,
   "penModeCrosshairVisible": true,
@@ -445,7 +445,7 @@
       }
     }
   ],
-  "numberOfCustomPens": 6,
+  "numberOfCustomPens": 7,
   "pdfScale": 4,
   "pdfBorderBox": true,
   "pdfFrame": false,

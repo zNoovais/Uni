@@ -4,38 +4,63 @@
     "type": "split",
     "children": [
       {
-        "id": "4b72f5572f700e94",
+        "id": "8508c03862339233",
         "type": "tabs",
         "children": [
           {
-            "id": "5c7014321e8d89e3",
+            "id": "1742d9dec95bb6bc",
             "type": "leaf",
             "state": {
               "type": "pdf",
               "state": {
-                "file": "3ano/PLC/projeto.pdf",
-                "page": 3,
-                "left": -10,
-                "top": 686,
-                "zoom": 1.5580880434374105
+                "file": "3ano/2semestre/Semantica/semana-1.pdf",
+                "page": 9,
+                "left": 102,
+                "top": 581,
+                "zoom": 1.85
               },
               "icon": "lucide-file-text",
-              "title": "projeto"
+              "title": "semana-1"
             }
           },
           {
-            "id": "9a75e477e1d8f5ed",
+            "id": "7de0e1adc8611e98",
             "type": "leaf",
             "state": {
               "type": "excalidraw",
               "state": {
-                "file": "3ano/PLC/trabalho.md"
+                "file": "3ano/2semestre/Semantica/NS e big step.md"
               },
               "icon": "excalidraw-icon",
-              "title": "trabalho"
+              "title": "NS e big step"
+            }
+          },
+          {
+            "id": "cce2fc5538d72ffd",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "3ano/2semestre/Semantica/resumos.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "resumos"
+            }
+          },
+          {
+            "id": "0ad310d4580d0d9a",
+            "type": "leaf",
+            "state": {
+              "type": "excalidraw",
+              "state": {
+                "file": "3ano/2semestre/Semantica/fichas.md"
+              },
+              "icon": "excalidraw-icon",
+              "title": "fichas"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -92,7 +117,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 247.5
   },
   "right": {
     "id": "349ab61464f6c816",
@@ -201,7 +226,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -219,21 +245,37 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "5c7014321e8d89e3",
+  "active": "0ad310d4580d0d9a",
   "lastOpenFiles": [
-    "3ano/PLC/trabalho.md",
-    "3ano/PLC/projeto.pdf",
-    "1ano/PF/ficha7.pdf",
-    "3ano/PLC/semana13_funcoes_vm.pdf",
-    "3ano/CC/2.Problemas_de_Decisão.pdf",
-    "3ano/CC/3.Funções_Parciais_Recursivas.pdf",
-    "3ano/CC/4.Introdução_à_Teoria_da_Complexidade.pdf",
-    "3ano/CC/Testes.md",
-    "3ano/CC/Teste2_2022-23.pdf",
-    "3ano/CC/Teste2_2023-24 (1).pdf",
-    "3ano/CC/Não confirmado 751583.crdownload",
-    "3ano/CC/Não confirmado 496610.crdownload",
-    "3ano/TNC/testes.md",
+    "3ano/2semestre/Semantica/consulta.pdf",
+    "3ano/2semestre/Semantica/semana-1.pdf",
+    "3ano/2semestre/Semantica/fichas.md",
+    "3ano/2semestre/Semantica/resumos.md",
+    "3ano/2semestre/Semantica/NS e big step.md",
+    "3ano/2semestre/Semantica/Sem título.md",
+    "3ano/2semestre/Semantica/Não confirmado 706825.crdownload",
+    "3ano/2semestre/Semantica/ficha1.pdf",
+    "3ano/2semestre/Otimização/fichas.md",
+    "3ano/2semestre/Otimização/Primeira Aula.md",
+    "3ano/2semestre/Otimização/T1_Convexidade.pdf",
+    "3ano/2semestre/Criptografia/Drawing 2026-02-09 09.06.21.excalidraw.md",
+    "3ano/2semestre/Criptografia/alo.py",
+    "venv/lib/python3.14/site-packages/cryptography-46.0.4.dist-info/REQUESTED",
+    "venv/lib/python3.14/site-packages/cryptography-46.0.4.dist-info/INSTALLER",
+    "venv/lib/python3.14/site-packages/cryptography/x509/__pycache__/verification.cpython-314.pyc",
+    "venv/lib/python3.14/site-packages/cryptography/x509/__pycache__/oid.cpython-314.pyc",
+    "venv/lib/python3.14/site-packages/cryptography/x509/__pycache__/ocsp.cpython-314.pyc",
+    "venv/lib/python3.14/site-packages/pip-25.3.dist-info/licenses/src/pip/_vendor/idna/LICENSE.md",
+    "venv/lib/python3.14/site-packages/pip/_vendor/idna/LICENSE.md",
+    "3ano/2semestre/Aprendizagem Computacional/Primeira Aula.md",
+    "3ano/2semestre/Base de Dados/Primeira aula.md",
+    "3ano/2semestre/Otimização/Sem título.md",
+    "3ano/1semestre/TNC/testes.md",
+    "3ano/2semestre/Programação Concorrente/Primeira Aula.md",
+    "3ano/2semestre/Drawing 2026-02-03 09.10.11.excalidraw.md",
+    "3ano/Sem título.md",
+    "3ano/1semestre/PLC/trabalho.md",
+    "3ano/1semestre/CC/Testes.md",
     "Sem título.canvas",
     "Midia/Pasted Image 20251219214752_436.png",
     "Midia/Pasted Image 20251226172619_017.png"
