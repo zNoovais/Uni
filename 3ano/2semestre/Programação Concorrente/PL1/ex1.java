@@ -1,16 +1,21 @@
+import java.util.ArrayList;
+
 class Printer extends Thread {
-    final int I;
+    final int tag;
     
     Counter counter;
 
 
     Printer(int I, Counter counter) {
-        this.I = I;
+        this.tag = I;
         this.counter = counter;
     }
 
     public void run() {
-        counter.Increment();
+            try {
+            Thread.sleep((int)(Math.random()*10));
+        } catch (InterruptedException e) {}
+        counter.Increment(tag);
     }
 
 
@@ -18,8 +23,12 @@ class Printer extends Thread {
 
 class Counter {
     int counter;
+
+    ArrayList<Integer> countList;
+
     Counter() {
         counter = 0;
+        countList = new ArrayList<>();
     }
 
     public void setCounter(int counter) {
@@ -30,9 +39,14 @@ class Counter {
         return counter;
     }
 
-    public void Increment() {
+    public void Increment(int tag) {
         counter++;
+        countList.add(tag);
     }
+
+    // public void printCountList() {
+    //     print(t)
+    // }
 
 
 }
@@ -40,7 +54,7 @@ class Counter {
 public class ex1 {
     public static void main(String[] args) throws InterruptedException{
         final int N = Integer.parseInt(args[0]);
-        final int I = Integer.parseInt(args[0]);
+
 
         
         Printer[] a = new Printer[N];
@@ -56,7 +70,7 @@ public class ex1 {
         for(int i = 0; i < N; i++) {
          a[i].join();
         }
-        System.out.println(counter.counter);
+        System.out.println(counter.countList);
         
     }
     

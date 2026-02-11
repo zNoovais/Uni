@@ -14,9 +14,9 @@
               "type": "pdf",
               "state": {
                 "file": "3ano/2semestre/Semantica/semana-1.pdf",
-                "page": 9,
-                "left": 102,
-                "top": 581,
+                "page": 6,
+                "left": 209,
+                "top": 301,
                 "zoom": 1.85
               },
               "icon": "lucide-file-text",
@@ -27,12 +27,28 @@
             "id": "7de0e1adc8611e98",
             "type": "leaf",
             "state": {
+              "type": "pdf",
+              "state": {
+                "file": "3ano/2semestre/Programação Concorrente/introducao.pdf",
+                "page": 27,
+                "left": -5,
+                "top": 233,
+                "zoom": 2.8649386084583903
+              },
+              "icon": "lucide-file-text",
+              "title": "introducao"
+            }
+          },
+          {
+            "id": "81328ebdb0e7d7bd",
+            "type": "leaf",
+            "state": {
               "type": "excalidraw",
               "state": {
-                "file": "3ano/2semestre/Semantica/NS e big step.md"
+                "file": "3ano/2semestre/Semantica/fichas.md"
               },
               "icon": "excalidraw-icon",
-              "title": "NS e big step"
+              "title": "fichas"
             }
           },
           {
@@ -46,21 +62,8 @@
               "icon": "excalidraw-icon",
               "title": "resumos"
             }
-          },
-          {
-            "id": "0ad310d4580d0d9a",
-            "type": "leaf",
-            "state": {
-              "type": "excalidraw",
-              "state": {
-                "file": "3ano/2semestre/Semantica/fichas.md"
-              },
-              "icon": "excalidraw-icon",
-              "title": "fichas"
-            }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
@@ -117,7 +120,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 247.5
+    "width": 247.5,
+    "collapsed": true
   },
   "right": {
     "id": "349ab61464f6c816",
@@ -245,33 +249,33 @@
       "pdf-plus:PDF++: Toggle auto-paste": false
     }
   },
-  "active": "0ad310d4580d0d9a",
+  "active": "1742d9dec95bb6bc",
   "lastOpenFiles": [
-    "3ano/2semestre/Semantica/consulta.pdf",
-    "3ano/2semestre/Semantica/semana-1.pdf",
+    "3ano/2semestre/Programação Concorrente/introducao.pdf",
     "3ano/2semestre/Semantica/fichas.md",
     "3ano/2semestre/Semantica/resumos.md",
+    "3ano/2semestre/Semantica/semana-1.pdf",
     "3ano/2semestre/Semantica/NS e big step.md",
+    "3ano/2semestre/Programação Concorrente/Drawing 2026-02-11 11.29.17.excalidraw.md",
+    "3ano/2semestre/Programação Concorrente/Primeira Aula.md",
+    "3ano/2semestre/Semantica/pratico.hs",
+    "3ano/2semestre/Programação Concorrente/PL1/guiao-01.pdf",
+    "2ano/Categorias/Notas Categorias.pdf",
+    "2ano/Categorias/Não confirmado 70993.crdownload",
+    "2ano/Categorias",
+    "3ano/2semestre/Criptografia/cifras.md",
+    "3ano/2semestre/Semantica/consulta.pdf",
     "3ano/2semestre/Semantica/Sem título.md",
     "3ano/2semestre/Semantica/Não confirmado 706825.crdownload",
     "3ano/2semestre/Semantica/ficha1.pdf",
     "3ano/2semestre/Otimização/fichas.md",
     "3ano/2semestre/Otimização/Primeira Aula.md",
-    "3ano/2semestre/Otimização/T1_Convexidade.pdf",
-    "3ano/2semestre/Criptografia/Drawing 2026-02-09 09.06.21.excalidraw.md",
-    "3ano/2semestre/Criptografia/alo.py",
-    "venv/lib/python3.14/site-packages/cryptography-46.0.4.dist-info/REQUESTED",
-    "venv/lib/python3.14/site-packages/cryptography-46.0.4.dist-info/INSTALLER",
-    "venv/lib/python3.14/site-packages/cryptography/x509/__pycache__/verification.cpython-314.pyc",
-    "venv/lib/python3.14/site-packages/cryptography/x509/__pycache__/oid.cpython-314.pyc",
-    "venv/lib/python3.14/site-packages/cryptography/x509/__pycache__/ocsp.cpython-314.pyc",
     "venv/lib/python3.14/site-packages/pip-25.3.dist-info/licenses/src/pip/_vendor/idna/LICENSE.md",
     "venv/lib/python3.14/site-packages/pip/_vendor/idna/LICENSE.md",
     "3ano/2semestre/Aprendizagem Computacional/Primeira Aula.md",
     "3ano/2semestre/Base de Dados/Primeira aula.md",
     "3ano/2semestre/Otimização/Sem título.md",
     "3ano/1semestre/TNC/testes.md",
-    "3ano/2semestre/Programação Concorrente/Primeira Aula.md",
     "3ano/2semestre/Drawing 2026-02-03 09.10.11.excalidraw.md",
     "3ano/Sem título.md",
     "3ano/1semestre/PLC/trabalho.md",
