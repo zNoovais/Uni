@@ -35,11 +35,11 @@ class Counter {
         this.counter = counter;
     }
 
-    public int getCounter() {
+    public synchronized int getCounter() {
         return counter;
     }
 
-    public void Increment(int tag) {
+    public synchronized void Increment(int tag) {
         counter++;
         countList.add(tag);
     }
