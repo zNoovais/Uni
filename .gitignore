@@ -1,2 +1,6 @@
-/1 ano/1 semestre
 *.
+.DS_Store
+.obsidian
+.vscode
+Midia
+
