@@ -1,10 +1,10 @@
 import Data.Maybe
 
-
-
 type Var = String
 type Numero = Integer
 type Booleano = Bool
+
+--------- FICHA 1 ---------
 
 data Aexp = N Numero | V Var | Mais Aexp Aexp | Mult Aexp Aexp | Menos Aexp Aexp | Prox Var | Suc Var
     deriving (Show, Eq, Ord)
@@ -57,7 +57,48 @@ code s (Comp c1 c2) = code (code s c1) c2
 code s (If b c1 c2) = if semanticsBool s b then code s c1 else code s c2
 code s (While b c) = if semanticsBool s b then code s (Comp c (While b c)) else s
 
+--------- FICHA 2 ----------
+data StmSOS = SkipSOS | CompSOS StmSOS StmSOS | AtriSOS Var Aexp | IfSOS Bexp StmSOS StmSOS | WhileSOS Bexp StmSOS | EndSOS
+    deriving Show
+
+--stepSOS. (COMO funciona o comp1 e o comp2????!?!?)
+
+stSOS = [(x,0),(y,0),(z,0)]
+
+codigoSOS = CompSOS (AtriSOS z (N 10)) (CompSOS (WhileSOS (Menor (V x) (V z)) (AtriSOS x (Mais (V x) (N 1)))) (CompSOS (AtriSOS y (Mais (V x) (N 0))) EndSOS))
+
+x1 = (codigoSOS,stSOS)
+
+stepSOS :: (StmSOS,St) -> (StmSOS,St)
+
+stepSOS (EndSOS,s) = (EndSOS,s)
+stepSOS (SkipSOS,s) = (SkipSOS,s)
+stepSOS (AtriSOS var exp,s) = (SkipSOS,subs s var exp)
+
+stepSOS (CompSOS SkipSOS stm2,s) = (stm2, s) 
+stepSOS (CompSOS stm1 stm2,s) = (CompSOS (fst (stepSOS (stm1,s)) ) stm2, snd (stepSOS (stm1,s)))
+
+
+stepSOS (IfSOS b stm1 stm2,s) = if semanticsBool s b then (stm1,s) else (stm2,s)
+stepSOS (WhileSOS b stm,s) = (IfSOS b (CompSOS stm (WhileSOS b stm)) SkipSOS, s)
+
+nstepsSOS :: Int -> (StmSOS,St) -> (StmSOS,St)
+nstepsSOS 0 c = c
+nstepsSOS n c = nstepsSOS (n-1) (stepSOS c)
+
+evalSOS :: (StmSOS,St) -> St
+evalSOS (EndSOS,s) = s
+evalSOS c = evalSOS (stepSOS c)
 
 
 
 
+--função do chat que imprime tudo.
+showSteps :: Int -> (StmSOS,St) -> IO ()
+showSteps n conf = mapM_ printStep (zip [0..n] (take (n+1) (iterate stepSOS conf)))
+  where
+    printStep (i,(stm,st)) = do
+        putStrLn ("Step " ++ show i)
+        putStrLn ("  Stm: " ++ show stm)
+        putStrLn ("  St : " ++ show st)
+        putStrLn ""
