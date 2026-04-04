@@ -1,0 +1,65 @@
+---
+
+excalidraw-plugin: parsed
+tags: [excalidraw]
+
+---
+==⚠  Switch to EXCALIDRAW VIEW in the MORE OPTIONS menu of this document. ⚠== You can decompress Drawing data with the command palette: 'Decompress current Excalidraw file'. For more info check in plugin settings under 'Saving'
+
+
+# Excalidraw Data
+
+## Text Elements
+funçao de hash criptografica
+
+é um exemplo de uma função de sentido único.
+
+                        H: {0,1}* --------> {0,1}^n
+
+todas as funções de hash nao sao injetivas!!  
+
+propiedades: 
+
+1. Pre imagem resistant: dado um valor hash h, deve ser inviável obter
+uma mensagem m tal que H(m) = h
+
+2. Segunda pre imagem resistant: dado um m1 é inviavel obter um m2 distante de m1 tal que 
+H(m1) = H(m2)
+
+(apesar das funçoes nao serem injetivas...)
+
+
+
+
+a função das passes é tb uma OW 
+
+
+
+ ^FV2T5UXM
+
+%%
+## Drawing
+```compressed-json
+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
+```
+%%
