@@ -1,5 +1,3 @@
-package PL2;
-
 public class Bank {
 
     private static class Account {

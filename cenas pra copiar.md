@@ -1,0 +1,2 @@
+source .newvenv/bin/activate
+
