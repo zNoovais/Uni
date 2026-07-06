@@ -1,0 +1,10 @@
+\babel@toc {portuguese}{}\relax 
+\contentsline {title}{Computação Quântica}{1}{}%
+\authcount {1}
+\contentsline {author}{José Novais}{1}{}%
+\contentsline {section}{\numberline {1}Introdução}{3}{}%
+\contentsline {section}{\numberline {2}O Algoritmo de Grover}{3}{}%
+\contentsline {subsection}{\numberline {2.1}A Formulação do Problema de Busca}{3}{}%
+\contentsline {subsection}{\numberline {2.2}Implementação do Circuito Quântico}{4}{}%
+\contentsline {subsubsection}{Algoritmo de Grover:}{4}{}%
+\contentsline {section}{\numberline {3}Conclusão: A Intersecção com a Criptografia}{6}{}%
