@@ -1,8 +1,7 @@
 .*
 venv311/
-Excalidraw/
 .*/
+!.obsidian
 !.gitignore
-Midia/
 datasets/
 NECC/
